@@ -62,7 +62,9 @@ void travelMeters(double meters){
 //990 : 90 degree turn
 task main()
 {
-	travelMeters(1);
+	//travelMeters(3);
+	turnByDegreesCounterClockwise(90);
+/*	travelMeters(1);
 	//turnCounterClockwise(990);
 	turnByDegreesCounterClockwise(90);
 	travelMeters(2.2);
@@ -73,7 +75,7 @@ task main()
 	turnByDegreesClockwise(90);
 	travelMeters(3);
 	//goBackward(2000);
-
+*/
 	/*
   //go forward for 2 seconds
   motor[motorD]=15;
