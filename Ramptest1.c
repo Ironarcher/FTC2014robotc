@@ -99,8 +99,8 @@ void getToTower2(){
 void getToTower1(){
 	turnByDegreesCounterClockwise(45);
 	travelMeters(.6);
-	turnByDegreesClockwise(47);
-	travelMetersFast(1.2);
+	turnByDegreesClockwise(70);
+	travelMetersFast(.8);
 }
 
 void getToTower3(){
@@ -116,8 +116,11 @@ void getToTower3(){
 task main()
 {
 	travelMeters(1.03);
-	turnByDegreesCounterClockwise(90);
+	turnByDegreesCounterClockwise(86);
 	travelMeters(0.55);
+	bNxtLCDStatusDisplay = true;
+	eraseDisplay();
+  nxtDisplayBigTextLine(3, "%d, %d", getTowerPosition(), getTowerPosition());
 	if(getTowerPosition() == 1) getToTower1();
 	else if(getTowerPosition() == 2) getToTower2();
 	else if(getTowerPosition() == 3) getToTower3();
