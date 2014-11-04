@@ -15,7 +15,7 @@ task main()
 
     if(abs(joystick.joy1_y1) > threshold)
     {
-      motor[motorD] = joystick.joy1_y1; //y1 controller moves motorD
+      motor[motorD] = (joystick.joy1_y1)/3; //y1 controller moves motorD
     }
     else
     {
@@ -24,7 +24,7 @@ task main()
 
     if(abs(joystick.joy1_y2) > threshold)
     {
-      motor[motorE] = joystick.joy1_y2; //y2 controller moves motorE
+      motor[motorE] = (joystick.joy1_y2)/3; //y2 controller moves motorE
     }
     else
     {

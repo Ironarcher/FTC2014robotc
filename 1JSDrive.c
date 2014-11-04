@@ -75,17 +75,14 @@ task main()
       yVal = 0;
     }*/
 
-    motor[motorD] = ((yVal) + (xVal) * scaleFactor);      //Sets left motor power
-    motor[motorE] = ((yVal) - (xVal) * scaleFactor);      //Sets right motor power
+    motor[motorD] = ((yVal) + (xVal) * scaleFactor)/3;      //Sets left motor power
+    motor[motorE] = ((yVal) - (xVal) * scaleFactor)/3;      //Sets right motor power
 
     //if(joy1Btn(1) == 1 && !isDropping){
     //	isDropping = true;
     //	//servo[servo1] = 120;
     //	servoLower(5);
-    //	wait1Msec(500);
-    //}
-    //if(joy1Btn(2) == 1 && isDropping){
-    //	isDropping = false;
+
     //	servo[servo1] = 0;
    //	wait1Msec(500);
     //}

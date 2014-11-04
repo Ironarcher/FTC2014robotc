@@ -1,14 +1,10 @@
-#pragma config(Hubs,  S1, HTMotor,  HTServo,  none,     none)
+#pragma config(Hubs,  S1, HTMotor,  HTMotor,  none,     none)
+#pragma config(Sensor, S1,     ,               sensorI2CMuxController)
 #pragma config(Sensor, S2,     ,               sensorHiTechnicIRSeeker1200)
 #pragma config(Motor,  motorA,          motorTray,     tmotorNXT, PIDControl, encoder)
 #pragma config(Motor,  mtr_S1_C1_1,     motorD,        tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C1_2,     motorE,        tmotorTetrix, openLoop)
-#pragma config(Servo,  srvo_S1_C2_1,    servo1,               tServoNone)
-#pragma config(Servo,  srvo_S1_C2_2,    servo2,               tServoNone)
-#pragma config(Servo,  srvo_S1_C2_3,    servo3,               tServoNone)
-#pragma config(Servo,  srvo_S1_C2_4,    servo4,               tServoNone)
-#pragma config(Servo,  srvo_S1_C2_5,    servo5,               tServoNone)
-#pragma config(Servo,  srvo_S1_C2_6,    servo6,               tServoNone)
+//*!!Code automatically generated yb 'ROBOTC' configuration wizard               !!*//
 
 void goForward(int duration){
 	motor[motorD]=23;
@@ -20,8 +16,8 @@ void goForward(int duration){
 }
 
 void goForwardFast(int duration){
-	motor[motorD]=46;
-	motor[motorE]=40;
+	motor[motorD]=92;
+	motor[motorE]=80;
 	wait1Msec(duration);
 	motor[motorD]=0;
 	motor[motorE]=0;
@@ -99,8 +95,8 @@ void getToTower2(){
 void getToTower1(){
 	turnByDegreesCounterClockwise(45);
 	travelMeters(.6);
-	turnByDegreesClockwise(70);
-	travelMetersFast(.8);
+	turnByDegreesClockwise(58);
+	travelMetersFast(1);
 }
 
 void getToTower3(){
@@ -108,9 +104,9 @@ void getToTower3(){
 	turnByDegreesCounterClockwise(90);
 	travelMeters(0.5);
 	turnByDegreesCounterClockwise(45);
-	travelMeters(0.4);
-	turnByDegreesClockwise(45);
-	travelMeters(1);
+	travelMeters(.5);
+	turnByDegreesClockwise(10);
+	travelMetersFast(1);
 }
 
 task main()
@@ -125,4 +121,8 @@ task main()
 	else if(getTowerPosition() == 2) getToTower2();
 	else if(getTowerPosition() == 3) getToTower3();
 	//getToTower3();
+}
+
+task gyroMeasure(){
+
 }
