@@ -25,6 +25,7 @@ void travelMeters(double meters);
 void travelMetersFast(double meters);
 void travelMetersBackwards(double meters);
 void travelMetersFastBackwards(double meters);
+void runPath(string path);
 void print(int s);
 int getInfrared();
 
@@ -38,7 +39,8 @@ void runPath(string path) {
 	string tempfunc = "";
 	string read = "";
 	for(int i = 0; i<sizeof(path); i++) {
-		string chare = stringGetChar(path, i);
+		char chare = StringGetChar(path, i);
+		print(3);
 		if(state == 0) {
 			tempfunc = chare;
 			state++;
@@ -281,7 +283,9 @@ task main()
 {
 
 	init();
-	getToTower3();
+	//getToTower3();
+	string s = "a100";
+	runPath(s);
 	while(true){
 		if(!runningNav && !ultrasonicBlock){
 			resumeTask(navigateToTower);
