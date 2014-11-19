@@ -1,4 +1,4 @@
-#pragma config(Hubs,  S1, HTMotor,  HTMotor,  none,     none)
+ #pragma config(Hubs,  S1, HTMotor,  HTMotor,  none,     none)
 #pragma config(Sensor, S1,     ,               sensorI2CMuxController)
 #pragma config(Sensor, S2,     ,               sensorSONAR)
 #pragma config(Sensor, S3,     HTGyro,         sensorAnalogInactive)
@@ -13,6 +13,7 @@
 #include "hitechnic-gyro.h"
 #include "hitechnic-sensormux.h"
 #include "hitechnic-irseeker-v2.h"
+
 
 //Pre-definitions
 bool ultrasonicBlock;
@@ -31,7 +32,38 @@ void resetEncoders(){
 	nMotorEncoder[motorD] = 0;
 	nMotorEncoder[motorE] = 0;
 }
+//a
+void runPath(string path) {
+	int state = 0;
+	string tempfunc = "";
+	string read = "";
+	for(int i = 0; i<sizeof(path); i++) {
+		string chare = stringGetChar(path, i);
+		if(state == 0) {
+			tempfunc = chare;
+			state++;
+		} else if (state == 3) {
+			if(tempfunc == "a") {
+				travelMeters(atoi(read)/100);
+			} else if(tempfunc == "b") {
+				travelMetersBackwards(atoi(read)/100);
+			} else if(tempfunc == "c") {
+				turnByDegreesClockwise(atoi(read));
+			} else if(tempfunc == "d") {
+				turnByDegreesCounterClockwise(atoi(read));
+			} else {
+				return;
+			}
+			state = 0;
+			read = "";
+			tempfunc = "";
+		} else {
+			read = strcat(read, chare);
+			state++;
+		}
+	}
 
+}
 void travelMeters(double meters){
 	//Motor D and Motor F are left side, Motor E, G are right side
 	motor[motorD]=20;
@@ -243,6 +275,7 @@ int getInfrared(){
 void print(int s){
 	NXTDisplayBigTextLine(3, "%d", s);
 }
+
 
 task main()
 {
