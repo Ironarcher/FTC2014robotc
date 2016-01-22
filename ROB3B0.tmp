@@ -298,9 +298,8 @@ task navigateToTower()
 
 task navigateCylinder(){
 	runningNav = true;
-	travelMeters(1.88);
-	//char pa[] = "a188d036a054c026a016c030a011c022a009c046a006c061a049c009a219b148";
-	//runPath(pa);
+	char pa[] = "a187d038a045a005c014c002a016c006c001a004a005d009c006c005c007c013c007c001a006c006c013a003c006c012c007a007c006c009c001a007c010c006a015c011a232b142";
+	runPath(pa);
 	runningNav = false;
 }
 
